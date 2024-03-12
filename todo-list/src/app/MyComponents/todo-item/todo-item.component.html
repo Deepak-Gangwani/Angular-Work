@@ -1,6 +1,9 @@
 <!-- <p>todo-item works!</p> -->
-<h3>{{todo.title}}</h3>
 
-<p>{{todo.desc}}</p>
+<div class="border">
+    <h3>{{todo.title}}</h3>
 
-<button class="btn btn-danger">Delete</button>
+    <p>{{todo.desc}}</p>
+
+    <button class="btn btn-danger" (click)="onClick(todo)">Delete</button>
+</div>

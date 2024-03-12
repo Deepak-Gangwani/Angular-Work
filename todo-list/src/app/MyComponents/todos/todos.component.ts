@@ -8,10 +8,10 @@ import { Todo } from '../../Todo';
 })
 export class TodosComponent implements OnInit {
 
-  todos:Todo[] | undefined
+  todos: Todo[]
 
-  constructor(){
-    this.todos=[
+  constructor() {
+    this.todos = [
       {
         sno: 1,
         title: "This is title1",
@@ -36,6 +36,13 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-  
+
+
+  // Creating thid event to work on todos.component.html
+  deleteTodo(todo: Todo) {
+    console.log(todo);
+    const index = this.todos.indexOf(todo);
+    this.todos.splice(index, 1);
+  }
 
 }
