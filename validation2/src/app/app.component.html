@@ -1,0 +1,40 @@
+<h1>Email Validation</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <!-- name input validation -->
+  <div class="form-group">
+    <input type="text" placeholder="Please enter your name" formControlName="name" id="name" class="form-control">
+
+    <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+      <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required</div>
+      <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should have
+        3 character</div>
+    </div>
+  </div>
+
+  <!-- email input  validation-->
+  <div class="form-group">
+    <input type="text" placeholder="Please enter a valid email" formControlName="email" id="email" class="form-control"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+    <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+      <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required</div>
+      <div *ngIf="f['email'].errors && f['email'].errors['pattern']">Please, enter a valid
+        email address</div>
+    </div>
+  </div>
+
+  <!-- body input validation -->
+   <!-- name input validation -->
+   <div class="form-group">
+    <input type="text" placeholder="Please enter your message" formControlName="body" id="body" class="form-control">
+
+    <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+      <div *ngIf="f['body'].errors && f['body'].errors['required']">Message is required</div>
+    </div>
+  </div>
+
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>
+
+<!-- <router-outlet /> -->
