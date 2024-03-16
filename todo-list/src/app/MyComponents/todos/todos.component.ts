@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../Todo';
 
+
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -8,21 +9,12 @@ import { Todo } from '../../Todo';
 })
 export class TodosComponent implements OnInit {
 
-  // localItem: string[] | null;
-  // localItem: any[] | null;
-  // localItem: string ;
-  todos: Todo[];
-  localItem: string | null;
-
+  todos: Todo[] = [];
 
   constructor() {
 
-    this.localItem = localStorage.getItem("todos");
-    if (this.localItem == null) {
-      this.todos = [];
-    } else {
-      this.todos = JSON.parse(this.localItem);
-    }
+    this.todos = [];
+
 
   }
 
