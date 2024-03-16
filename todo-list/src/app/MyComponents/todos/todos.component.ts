@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../Todo';
 
+// The below package is imported because local storage not working on browser
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-todos',
@@ -11,9 +15,19 @@ export class TodosComponent implements OnInit {
 
   todos: Todo[] = [];
 
-  constructor() {
 
-    this.todos = [];
+  // Updated constructor to inject platform ID and platform Browser for using local storage
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+
+    // this.todos = [];
+    if (isPlatformBrowser(this.platformId)) {
+
+      const storedTodos = localStorage.getItem("todos");
+      if (storedTodos) {
+        this.todos = JSON.parse(storedTodos);
+      }
+    }
+
 
 
   }
@@ -38,6 +52,12 @@ export class TodosComponent implements OnInit {
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 
-
-
+  
+  // Creating the event to work on on click strike event on todos.component.html
+  toggleTodo(todo: Todo) {
+    // console.log(todo);
+    const index=this.todos.indexOf(todo);
+    this.todos[index].active=!this.todos[index].active;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
 }
