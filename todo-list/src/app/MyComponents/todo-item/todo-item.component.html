@@ -1,14 +1,18 @@
 <!-- <p>todo-item works!</p> -->
 
-<div class="border">
-    <h5 [ngClass]="{'strike':!todo.active}">{{todo.title}}</h5>
 
-    <p [ngClass]="{'strike':!todo.active}">{{todo.desc}}</p>
 
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="todo{{i}}" (click)="onCheckBoxClick(todo)" [checked]="!todo.active">
-        <label class="form-check-label" for="todo{{i}}">Completed</label>
+    <div class="data-box border d-flex gap-5 justify-content-around">
+            <h5 class="card-title" [ngClass]="{'strike':!todo.active}">{{todo.title}}</h5>
+
+            <p class="card-text" [ngClass]="{'strike':!todo.active}">{{todo.desc}}</p>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="todo{{i}}" (click)="onCheckBoxClick(todo)"
+                    [checked]="!todo.active">
+                <!-- <label class="form-check-label" for="todo{{i}}">Completed</label> -->
+            </div>
+            <button class="btn btn-danger btn-sm " (click)="onClick(todo)">Delete</button>
+
+        
     </div>
-
-    <button class="btn btn-danger btn-sm " (click)="onClick(todo)">Delete</button>
-</div>

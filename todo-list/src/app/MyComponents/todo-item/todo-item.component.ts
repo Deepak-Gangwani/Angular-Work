@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../Todo';
 
+declare var $: any; // Declare $ variable to access jQuery
+
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
@@ -11,27 +13,30 @@ export class TodoItemComponent implements OnInit {
   // Creating a decorator input to add item in the todo list
   @Input() todo: Todo = new Todo;
 
-  @Input() i:number | undefined;
+  @Input() i: number | undefined;
 
   // implementing event emitter to delete selcted element in todo
-  @Output() todoDelete: EventEmitter<Todo>=new EventEmitter
+  @Output() todoDelete: EventEmitter<Todo> = new EventEmitter
 
-  @Output() todoCheckbox: EventEmitter<Todo>=new EventEmitter
+  @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter
 
-  constructor(){
+  constructor() {
 
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+    $(document).ready(function () {
+      $('#data-tables').DataTable();
+    });
   }
 
-  onClick(todo: Todo){
+  onClick(todo: Todo) {
     // Calling the built in function to delete the selected todo content
     this.todoDelete.emit(todo);
     console.log("Onclick event is triggered");
   }
 
-  onCheckBoxClick(todo: Todo){
+  onCheckBoxClick(todo: Todo) {
     this.todoCheckbox.emit(todo);
   }
 }

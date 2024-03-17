@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list';
+  
 
   // created a constructor in the class to auto run the settimeout feature 
   constructor() {

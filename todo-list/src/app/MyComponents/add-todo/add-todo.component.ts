@@ -8,27 +8,40 @@ import { Todo } from '../../Todo';
 })
 export class AddTodoComponent implements OnInit {
 
-  title!: string;
-  desc!: string;
-  // implementing event emitter to delete selected element in todo
-  @Output() todoAdd: EventEmitter<Todo>=new EventEmitter
+  title: string='';
+  desc: string='';
 
-  constructor(){
+  showError: boolean = false;
+  // implementing event emitter to delete selected element in todo
+  @Output() todoAdd: EventEmitter<Todo> = new EventEmitter
+
+  constructor() {
 
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
 
-  onSubmit(){
-    const todo={
-      sno: 8,
-      title: this.title,
-      desc: this.desc,
-      active: true
+  onSubmit() {
+
+    if (this.title.trim() === '' || this.desc.trim() === '' ) {
+      this.showError = true;
+    } else {
+      this.showError = false;
+      const todo = {
+        sno: 8,
+        title: this.title,
+        desc: this.desc,
+        active: true
+      }
+      this.todoAdd.emit(todo);
+      // Reset the input field
+      this.title = '';
+      // Reset the input field
+      this.desc = '';
     }
-    this.todoAdd.emit(todo); 
+
   }
 
-  
+
 }

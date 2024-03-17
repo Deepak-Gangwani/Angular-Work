@@ -4,18 +4,40 @@
 <h4>Add a Todo</h4>
 
 <div class="container-fluid">
-    <div class="container border rounded p-5">
-        <!-- Implementing on submit event using angular built in directive -->
-        <form (ngSubmit)="onSubmit()">
-            <div class="mb-3">
-                <label for="title" class="form-label">Todo Title</label>
-                <input type="text" [(ngModel)]="title" class="form-control" name="=title" id="title" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="desc" class="form-label">Todo Description</label>
-                <textarea  [(ngModel)]="desc" class="form-control" placeholder="Please enter your description" name="desc" id="desc"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Todo</button>
-        </form>
+    <div class="container ">
+        <div class="border border-info border-5 rounded p-5 bg-info-subtle w-75 mx-auto">
+            <h1>Add Your Todo's</h1>
+            <!-- Implementing on submit event using angular built in directive -->
+            <form (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                   
+                    <input type="text" [(ngModel)]="title" placeholder="Enter Your Todo title"
+                        class="form-control" name="=title" id="title" required="true">
+                    
+                </div>
+                
+                <div class="mb-3">
+                    
+                    <textarea [(ngModel)]="desc" class="form-control" placeholder="Enter Your Description"
+                        name="desc" id="desc" required="true"></textarea>
+                    
+                </div>
+                
+                <button type="submit" class="btn btn-outline-info fw-bolder btn-lg fs-3">Add Todo</button>
+            </form>
+            <div *ngIf="showError"  class=" alert alert-danger" role="alert">Please fill both the input field!</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-info">
+    <div class="container">
+        <div class="border border border-white d-flex gap-4 bg-info">
+            <h4>Title</h4>
+            <h4>Descriptions</h4>
+            <h4>Completed/Not Completed</h4>
+            <h4>Delete</h4>
+        
+        </div>
     </div>
 </div>
