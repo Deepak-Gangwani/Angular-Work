@@ -6,6 +6,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
 
 
+declare var $: any; // Declare $ variable to access jQuery
+
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -34,6 +36,9 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+    $(document).ready(function () {
+      $('#dataTable').DataTable();
+    });
   }
 
 

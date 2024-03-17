@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../Todo';
 
-declare var $: any; // Declare $ variable to access jQuery
+
 
 @Component({
-  selector: 'app-todo-item',
+  selector: 'tr',
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.css'
 })
@@ -25,9 +25,7 @@ export class TodoItemComponent implements OnInit {
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
-    $(document).ready(function () {
-      $('#data-tables').DataTable();
-    });
+  
   }
 
   onClick(todo: Todo) {

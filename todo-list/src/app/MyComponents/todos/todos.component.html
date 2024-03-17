@@ -5,14 +5,25 @@
     <li>{{todo.sno}}-{{todo.title}}-{{todo.desc}}-{{todo.active}}</li>
 </ul> -->
 
-<app-add-todo (todoAdd)="addTodo($event)" ></app-add-todo>
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
 
-<h4>Your Todos</h4>
 
-<div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
+<div *ngIf="this.todos.length===0; else elseBlock" class="alert alert-primary w-75 mx-auto text-center fw-bolder fs-3" role="alert">No Todos to display</div>
 <ng-template #elseBlock>
 
-    <div *ngFor="let todo of todos; index as i">
-        <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-item>
-    </div>
+    <table id="dataTable" class="table table-striped table-bordered bg-white text-center w-75 mx-auto">
+        <thead class="">
+           
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Delete</th>
+           
+        </thead>
+        <tbody *ngFor="let todo of todos; index as i">
+            <tr [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)"
+                (todoCheckbox)="toggleTodo($event)"></tr>
+        </tbody>
+
+    </table>
 </ng-template>
